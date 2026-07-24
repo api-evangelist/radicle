@@ -1,0 +1,92 @@
+openapi: 3.1.0
+info:
+  title: Radicle HTTP API (radicle-httpd) Issues Node API
+  version: 6.1.0
+  x-generated: '2026-07-20'
+  x-method: searched
+  x-source: https://seed.radicle.xyz/api/v1
+  description: 'Radicle is a sovereign, peer-to-peer code collaboration stack built on Git. Each Radicle node can run `radicle-httpd`, a lightweight HTTP daemon that exposes a read-oriented JSON API over the node''s local storage: repositories (Radicle Object Bag / COBs), issues, patches, commits, trees, blobs, node info and network statistics. This specification was derived by probing the live public seed node at https://seed.radicle.xyz/api/v1 (radicle-httpd 0.25.0, apiVersion 6.1.0). Read endpoints are public and unauthenticated; write operations on a self-hosted node require a signed session created with the node''s key. Identifiers use Radicle conventions: Repository IDs (`rad:`), Node IDs (`z6Mk...`, a did:key), and DIDs (`did:key:...`).
+
+    '
+  contact:
+    name: Radicle
+    url: https://radicle.dev/
+  license:
+    name: MIT OR Apache-2.0
+servers:
+- url: https://seed.radicle.xyz/api/v1
+  description: Public community seed node (read-only)
+- url: https://{node}/api/v1
+  description: Any self-hosted radicle-httpd node
+  variables:
+    node:
+      default: seed.radicle.xyz
+tags:
+- name: Node
+  description: Node identity, configuration and peers
+paths:
+  /node:
+    get:
+      tags:
+      - Node
+      operationId: getNode
+      summary: Get local node info
+      description: Returns the local node identity, agent, configuration and running state.
+      responses:
+        '200':
+          description: Node info
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Node'
+  /nodes/{nid}:
+    get:
+      tags:
+      - Node
+      operationId: getNodeById
+      summary: Get a known node by Node ID
+      parameters:
+      - name: nid
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Node info
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Node'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Node:
+      type: object
+      properties:
+        id:
+          type: string
+        agent:
+          type:
+          - string
+          - 'null'
+        config:
+          type: object
+        state:
+          type: object
+    Error:
+      type: object
+      description: Error envelope returned by radicle-httpd.
+      properties:
+        error:
+          type: string
+        code:
+          type: integer
+      required:
+      - error
+      - code

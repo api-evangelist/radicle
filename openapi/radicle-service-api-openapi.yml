@@ -1,0 +1,72 @@
+openapi: 3.1.0
+info:
+  title: Radicle HTTP API (radicle-httpd) Issues Service API
+  version: 6.1.0
+  x-generated: '2026-07-20'
+  x-method: searched
+  x-source: https://seed.radicle.xyz/api/v1
+  description: 'Radicle is a sovereign, peer-to-peer code collaboration stack built on Git. Each Radicle node can run `radicle-httpd`, a lightweight HTTP daemon that exposes a read-oriented JSON API over the node''s local storage: repositories (Radicle Object Bag / COBs), issues, patches, commits, trees, blobs, node info and network statistics. This specification was derived by probing the live public seed node at https://seed.radicle.xyz/api/v1 (radicle-httpd 0.25.0, apiVersion 6.1.0). Read endpoints are public and unauthenticated; write operations on a self-hosted node require a signed session created with the node''s key. Identifiers use Radicle conventions: Repository IDs (`rad:`), Node IDs (`z6Mk...`, a did:key), and DIDs (`did:key:...`).
+
+    '
+  contact:
+    name: Radicle
+    url: https://radicle.dev/
+  license:
+    name: MIT OR Apache-2.0
+servers:
+- url: https://seed.radicle.xyz/api/v1
+  description: Public community seed node (read-only)
+- url: https://{node}/api/v1
+  description: Any self-hosted radicle-httpd node
+  variables:
+    node:
+      default: seed.radicle.xyz
+tags:
+- name: Service
+  description: API root and service metadata
+paths:
+  /:
+    get:
+      tags:
+      - Service
+      operationId: getServiceRoot
+      summary: Service root
+      description: Returns service metadata, the node ID and the list of available link relations.
+      responses:
+        '200':
+          description: Service metadata
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Service'
+components:
+  schemas:
+    Service:
+      type: object
+      properties:
+        message:
+          type: string
+        service:
+          type: string
+          example: radicle-httpd
+        version:
+          type: string
+          example: 0.25.0-unknown
+        apiVersion:
+          type: string
+          example: 6.1.0
+        nid:
+          type: string
+        path:
+          type: string
+        links:
+          type: array
+          items:
+            type: object
+            properties:
+              href:
+                type: string
+              rel:
+                type: string
+              type:
+                type: string

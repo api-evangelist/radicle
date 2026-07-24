@@ -1,0 +1,148 @@
+openapi: 3.1.0
+info:
+  title: Radicle HTTP API (radicle-httpd) Issues API
+  version: 6.1.0
+  x-generated: '2026-07-20'
+  x-method: searched
+  x-source: https://seed.radicle.xyz/api/v1
+  description: 'Radicle is a sovereign, peer-to-peer code collaboration stack built on Git. Each Radicle node can run `radicle-httpd`, a lightweight HTTP daemon that exposes a read-oriented JSON API over the node''s local storage: repositories (Radicle Object Bag / COBs), issues, patches, commits, trees, blobs, node info and network statistics. This specification was derived by probing the live public seed node at https://seed.radicle.xyz/api/v1 (radicle-httpd 0.25.0, apiVersion 6.1.0). Read endpoints are public and unauthenticated; write operations on a self-hosted node require a signed session created with the node''s key. Identifiers use Radicle conventions: Repository IDs (`rad:`), Node IDs (`z6Mk...`, a did:key), and DIDs (`did:key:...`).
+
+    '
+  contact:
+    name: Radicle
+    url: https://radicle.dev/
+  license:
+    name: MIT OR Apache-2.0
+servers:
+- url: https://seed.radicle.xyz/api/v1
+  description: Public community seed node (read-only)
+- url: https://{node}/api/v1
+  description: Any self-hosted radicle-httpd node
+  variables:
+    node:
+      default: seed.radicle.xyz
+tags:
+- name: Issues
+  description: Repository issues (collaborative objects)
+paths:
+  /repos/{rid}/issues:
+    get:
+      tags:
+      - Issues
+      operationId: listIssues
+      summary: List repository issues
+      parameters:
+      - $ref: '#/components/parameters/Rid'
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 0
+      - name: perPage
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+      - name: state
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - open
+          - closed
+      responses:
+        '200':
+          description: Array of issues
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Issue'
+  /repos/{rid}/issues/{issueId}:
+    get:
+      tags:
+      - Issues
+      operationId: getIssue
+      summary: Get an issue
+      parameters:
+      - $ref: '#/components/parameters/Rid'
+      - name: issueId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Issue
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Issue'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  parameters:
+    Rid:
+      name: rid
+      in: path
+      required: true
+      description: Repository ID (e.g. rad:z6cFWeWpnZNHh9rUW8phgA3b5yGt)
+      schema:
+        type: string
+  schemas:
+    Did:
+      type: object
+      properties:
+        id:
+          type: string
+          description: DID (did:key:...)
+        alias:
+          type: string
+    Issue:
+      type: object
+      properties:
+        id:
+          type: string
+        author:
+          $ref: '#/components/schemas/Did'
+        title:
+          type: string
+        state:
+          type: object
+          properties:
+            status:
+              type: string
+              enum:
+              - open
+              - closed
+        assignees:
+          type: array
+          items:
+            $ref: '#/components/schemas/Did'
+        labels:
+          type: array
+          items:
+            type: string
+        discussion:
+          type: array
+          items:
+            type: object
+    Error:
+      type: object
+      description: Error envelope returned by radicle-httpd.
+      properties:
+        error:
+          type: string
+        code:
+          type: integer
+      required:
+      - error
+      - code
