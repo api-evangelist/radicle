@@ -1,0 +1,24 @@
+generated: '2026-07-20'
+method: searched
+source: https://radicle.dev/ (release announcements) + CHANGELOG.md + live API
+versioning:
+  scheme: semver
+  detail: >-
+    Radicle follows Semantic Versioning (per CHANGELOG.md). The overall stack
+    releases as radicle 1.x (latest observed 1.9.1, 2026-05-22). The HTTP API is
+    path-versioned at /api/v1 and reports its own apiVersion (6.1.0) and the
+    radicle-httpd binary version (0.25.0) at the service root.
+  current_stack: 1.9.1
+  current_api: 6.1.0
+  docs: https://github.com/radicle-dev/heartwood/blob/master/CHANGELOG.md
+deprecation:
+  policy_url: null
+  sunset_header: false
+  detail: No formal deprecation/Sunset-header policy published; changes are tracked in CHANGELOG and release notes.
+sla:
+  url: null
+  detail: >-
+    Radicle is peer-to-peer with no central service, so there is no hosted SLA;
+    the public seed node is best-effort infrastructure.
+status_page: null
+releases: https://files.radicle.dev/releases/latest

@@ -1,0 +1,27 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/radicle-httpd-openapi.yml + live probe of seed.radicle.xyz
+format: custom
+envelope:
+  description: >-
+    radicle-httpd returns a JSON error envelope with a human-readable `error`
+    message and a numeric `code` mirroring the HTTP status. It is NOT RFC 9457
+    application/problem+json; content-type is application/json.
+  shape:
+    error: string
+    code: integer
+  example:
+    error: "failed to resolve path '/var/lib/radicle/storage/...': No such file or directory; class=Os (2); code=NotFound (-3)"
+    code: 404
+problems:
+- status: 400
+  title: Bad request
+  description: Invalid revision (sha), path, or query parameter.
+  source_operation: openapi/radicle-httpd-openapi.yml#getTree
+- status: 404
+  title: Not found
+  description: Repository (rid), object, node (nid) or path does not exist / is not seeded by this node.
+  source_operation: openapi/radicle-httpd-openapi.yml#getRepo
+- status: 500
+  title: Internal error
+  description: Node storage or Git backend error while serving the request.

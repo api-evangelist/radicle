@@ -1,0 +1,41 @@
+generated: '2026-07-20'
+method: searched
+source: https://radicle.dev/guides (rad(1) manual) + heartwood rad.1.adoc
+name: rad
+description: >-
+  The Radicle CLI (`rad`) is the primary first-party tool for the Radicle
+  peer-to-peer code collaboration stack. It manages profiles and keys, runs the
+  local node, and publishes/collaborates on repositories, issues and patches.
+requirements:
+- git >= 2.34.0
+- ssh-agent (or RAD_PASSPHRASE)
+install:
+- method: script
+  command: "curl -sSf https://radicle.xyz/install | sh"
+- method: releases
+  url: https://files.radicle.dev/releases/latest
+commands:
+- name: auth
+  summary: Create/manage a Radicle profile and key pair; adds key to ssh-agent.
+- name: self
+  summary: Show profile information (DID, NID, home directory).
+- name: init
+  summary: Initialize/publish the current Git repository to the Radicle network.
+- name: clone
+  summary: Clone a repository from the network by RID.
+- name: seed
+  summary: Seed (host/replicate) a repository on your node.
+- name: ls
+  summary: List repositories in local storage.
+- name: inspect
+  summary: Inspect a repository's identity, refs and metadata.
+- name: node
+  summary: Control the local node (status, start, logs, connect).
+- name: id
+  summary: Manage repository identity and delegates (see rad-id(1)).
+- name: patch
+  summary: Create, list and manage patches / change proposals (see rad-patch(1)).
+notes: >-
+  git-remote-rad(1) provides the Git remote helper that integrates rad with
+  standard git push/pull. See individual man pages (rad-id, rad-patch) in the
+  heartwood repository for full command surfaces.

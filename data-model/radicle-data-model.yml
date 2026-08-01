@@ -1,0 +1,61 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/radicle-httpd-openapi.yml + live probe of seed.radicle.xyz
+entities:
+- name: Node
+  id_field: id
+  id_format: "z6Mk... (NID / did:key)"
+  description: A Radicle peer running the Heartwood protocol.
+- name: Repo
+  id_field: rid
+  id_format: "rad:<base58> (RID)"
+  description: A repository seeded by a node; carries typed payloads (xyz.radicle.project) and delegates.
+- name: Delegate
+  id_field: id
+  id_format: "did:key:..."
+  description: A DID authorized to sign a repository's identity.
+- name: Issue
+  id_field: id
+  id_format: "git-oid (COB id)"
+  description: A collaborative-object issue attached to a repository.
+- name: Patch
+  id_field: id
+  id_format: "git-oid (COB id)"
+  description: A change proposal (set of revisions) attached to a repository.
+- name: Commit
+  id_field: id
+  id_format: "git-sha"
+  description: A Git commit in a repository's history.
+relationships:
+- from: Repo
+  to: Node
+  type: belongs_to
+  via: seeding/node storage
+- from: Repo
+  to: Delegate
+  type: has_many
+  via: delegates[]
+- from: Issue
+  to: Repo
+  type: belongs_to
+  via: rid path parameter
+- from: Patch
+  to: Repo
+  type: belongs_to
+  via: rid path parameter
+- from: Commit
+  to: Repo
+  type: belongs_to
+  via: rid path parameter
+- from: Issue
+  to: Delegate
+  type: has_one
+  via: author (did)
+- from: Patch
+  to: Delegate
+  type: has_one
+  via: author (did)
+- from: Patch
+  to: Commit
+  type: has_many
+  via: revisions[].oid

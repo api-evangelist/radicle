@@ -1,0 +1,43 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/radicle-dev/heartwood + https://files.radicle.dev/releases/latest
+notes: >-
+  Radicle distributes its tooling as prebuilt binaries and Rust source crates
+  from the Heartwood monorepo rather than through crates.io. There is no
+  published npm/PyPI client for the radicle-httpd HTTP API (the TypeScript
+  httpd-client used by the web explorer is not published to a registry).
+packages:
+- language: rust
+  registry: source
+  name: radicle
+  url: https://github.com/radicle-dev/heartwood/tree/master/radicle
+  install: "curl -sSf https://radicle.xyz/install | sh"
+  official: true
+  description: Core Radicle library (protocol, storage, COBs).
+- language: rust
+  registry: source
+  name: radicle-cli
+  url: https://github.com/radicle-dev/heartwood/tree/master/crates/radicle-cli
+  install: "curl -sSf https://radicle.xyz/install | sh"
+  official: true
+  description: The `rad` command-line tool.
+- language: rust
+  registry: source
+  name: radicle-node
+  url: https://github.com/radicle-dev/heartwood/tree/master/crates/radicle-node
+  install: "curl -sSf https://radicle.xyz/install | sh"
+  official: true
+  description: The Radicle node (Heartwood protocol daemon).
+- language: rust
+  registry: source
+  name: radicle-crypto
+  url: https://github.com/radicle-dev/heartwood/tree/master/crates/radicle-crypto
+  official: true
+  description: Cryptographic primitives (Ed25519 keys, DIDs, signatures).
+binaries:
+- name: rad
+  url: https://files.radicle.dev/releases/latest
+  description: Radicle CLI binary.
+- name: radicle-node
+  url: https://files.radicle.dev/releases/latest
+  description: Radicle node binary.

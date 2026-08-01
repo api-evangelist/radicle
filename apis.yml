@@ -1,22 +1,193 @@
 aid: radicle
 name: Radicle
-description: 'Radicle is a company surfaced as a portfolio company of electric-capital and added to the
-  API Evangelist network as a stub for enrichment. Sector: developer-tools. This profile is a lead awaiting
-  the enrichment pipeline.'
+description: >-
+  Radicle is a sovereign, peer-to-peer code collaboration stack built on Git,
+  developed by Radicle (radicle.dev) and backed by Electric Capital. Instead of
+  relying on a central host, every user runs their own node, and repositories,
+  issues and patches replicate across the network as cryptographically-signed
+  Collaborative Objects (COBs). The stack ships the `rad` command-line tooling,
+  the Heartwood protocol and node, a terminal UI, a desktop app, and a web
+  explorer. Each node can run `radicle-httpd`, a lightweight HTTP daemon that
+  exposes a read-oriented JSON API over the node's storage — repositories,
+  issues, patches, commits, source trees, node info and network statistics —
+  which powers the Radicle web explorer and third-party tooling. Identity is
+  key-based (DIDs / did:key), so there are no accounts, passwords or platform
+  lock-in. This profile was enriched from Radicle's public surface: the live
+  seed node API, the security.txt, the Heartwood source, and the CLI manuals.
 url: https://raw.githubusercontent.com/api-evangelist/radicle/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: open
+  trial: false
+  try_now: false
+  public: true
+  label: Open access
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://radicle.dev/assets/images/radicle.svg
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - electric-capital
-x-tier: stub
+x-tier: enriched
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
 - Developer Tools
-apis: []
+- Code Collaboration
+- Git
+- Peer-to-Peer
+- Version Control
+- Open Source
+- Decentralized
+- Developer Tools API
+apis:
+- aid: radicle:radicle-issues-api
+  name: Radicle Issues API
+  description: Repository issues (collaborative objects)
+  humanURL: https://radicle.network/nodes/seed.radicle.xyz
+  baseURL: https://seed.radicle.xyz/api/v1
+  tags:
+  - Issues
+  properties:
+  - type: OpenAPI
+    url: openapi/radicle-issues-api-openapi.yml
+  - type: Authentication
+    url: authentication/radicle-authentication.yml
+  - type: ErrorCatalog
+    url: errors/radicle-problem-types.yml
+  - type: Conventions
+    url: conventions/radicle-conventions.yml
+  - type: DataModel
+    url: data-model/radicle-data-model.yml
+  - type: Conformance
+    url: conformance/radicle-conformance.yml
+- aid: radicle:radicle-node-api
+  name: Radicle Node API
+  description: Node identity, configuration and peers
+  humanURL: https://radicle.network/nodes/seed.radicle.xyz
+  baseURL: https://seed.radicle.xyz/api/v1
+  tags:
+  - Node
+  properties:
+  - type: OpenAPI
+    url: openapi/radicle-node-api-openapi.yml
+  - type: Authentication
+    url: authentication/radicle-authentication.yml
+  - type: ErrorCatalog
+    url: errors/radicle-problem-types.yml
+  - type: Conventions
+    url: conventions/radicle-conventions.yml
+  - type: DataModel
+    url: data-model/radicle-data-model.yml
+  - type: Conformance
+    url: conformance/radicle-conformance.yml
+- aid: radicle:radicle-patches-api
+  name: Radicle Patches API
+  description: Repository patches (change proposals)
+  humanURL: https://radicle.network/nodes/seed.radicle.xyz
+  baseURL: https://seed.radicle.xyz/api/v1
+  tags:
+  - Patches
+  properties:
+  - type: OpenAPI
+    url: openapi/radicle-patches-api-openapi.yml
+  - type: Authentication
+    url: authentication/radicle-authentication.yml
+  - type: ErrorCatalog
+    url: errors/radicle-problem-types.yml
+  - type: Conventions
+    url: conventions/radicle-conventions.yml
+  - type: DataModel
+    url: data-model/radicle-data-model.yml
+  - type: Conformance
+    url: conformance/radicle-conformance.yml
+- aid: radicle:radicle-repositories-api
+  name: Radicle Repositories API
+  description: Radicle repositories seeded by the node
+  humanURL: https://radicle.network/nodes/seed.radicle.xyz
+  baseURL: https://seed.radicle.xyz/api/v1
+  tags:
+  - Repositories
+  properties:
+  - type: OpenAPI
+    url: openapi/radicle-repositories-api-openapi.yml
+  - type: Authentication
+    url: authentication/radicle-authentication.yml
+  - type: ErrorCatalog
+    url: errors/radicle-problem-types.yml
+  - type: Conventions
+    url: conventions/radicle-conventions.yml
+  - type: DataModel
+    url: data-model/radicle-data-model.yml
+  - type: Conformance
+    url: conformance/radicle-conformance.yml
+- aid: radicle:radicle-service-api
+  name: Radicle Service API
+  description: API root and service metadata
+  humanURL: https://radicle.network/nodes/seed.radicle.xyz
+  baseURL: https://seed.radicle.xyz/api/v1
+  tags:
+  - Service
+  properties:
+  - type: OpenAPI
+    url: openapi/radicle-service-api-openapi.yml
+  - type: Authentication
+    url: authentication/radicle-authentication.yml
+  - type: ErrorCatalog
+    url: errors/radicle-problem-types.yml
+  - type: Conventions
+    url: conventions/radicle-conventions.yml
+  - type: DataModel
+    url: data-model/radicle-data-model.yml
+  - type: Conformance
+    url: conformance/radicle-conformance.yml
+- aid: radicle:radicle-source-api
+  name: Radicle Source API
+  description: Commits, trees, blobs and READMEs
+  humanURL: https://radicle.network/nodes/seed.radicle.xyz
+  baseURL: https://seed.radicle.xyz/api/v1
+  tags:
+  - Source
+  properties:
+  - type: OpenAPI
+    url: openapi/radicle-source-api-openapi.yml
+  - type: Authentication
+    url: authentication/radicle-authentication.yml
+  - type: ErrorCatalog
+    url: errors/radicle-problem-types.yml
+  - type: Conventions
+    url: conventions/radicle-conventions.yml
+  - type: DataModel
+    url: data-model/radicle-data-model.yml
+  - type: Conformance
+    url: conformance/radicle-conformance.yml
+- aid: radicle:radicle-stats-api
+  name: Radicle Stats API
+  description: Aggregate node statistics
+  humanURL: https://radicle.network/nodes/seed.radicle.xyz
+  baseURL: https://seed.radicle.xyz/api/v1
+  tags:
+  - Stats
+  properties:
+  - type: OpenAPI
+    url: openapi/radicle-stats-api-openapi.yml
+  - type: Authentication
+    url: authentication/radicle-authentication.yml
+  - type: ErrorCatalog
+    url: errors/radicle-problem-types.yml
+  - type: Conventions
+    url: conventions/radicle-conventions.yml
+  - type: DataModel
+    url: data-model/radicle-data-model.yml
+  - type: Conformance
+    url: conformance/radicle-conformance.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -24,4 +195,59 @@ maintainers:
   email: info@apis.io
 common:
 - type: Website
-  url: https://radicle.xyz/
+  url: https://radicle.dev/
+- type: DeveloperPortal
+  url: https://radicle.dev/
+- type: Documentation
+  url: https://radicle.dev/guides
+- type: GettingStarted
+  url: https://radicle.dev/guides/quick-start/
+- type: APIReference
+  url: openapi/radicle-httpd-openapi.yml
+- type: GitHubOrganization
+  url: https://github.com/radicle-dev
+- type: Blog
+  url: https://radicle.dev/#updates
+- type: BlogRSS
+  url: https://radicle.dev/feed.xml
+- type: Download
+  url: https://radicle.dev/download
+- type: FAQ
+  url: https://radicle.dev/faq
+- type: Support
+  url: https://radicle.zulipchat.com
+- type: SDKs
+  url: packages/radicle-packages.yml
+- type: Packages
+  url: packages/radicle-packages.yml
+- type: CLI
+  url: cli/radicle-cli.yml
+- type: ChangeLog
+  url: changelog/radicle-changelog.yml
+- type: Lifecycle
+  url: lifecycle/radicle-lifecycle.yml
+- type: Authentication
+  url: authentication/radicle-authentication.yml
+- type: WellKnown
+  url: well-known/radicle-well-known.yml
+- type: SecurityTxt
+  url: well-known/radicle-security.txt
+- type: VulnerabilityDisclosure
+  url: security/radicle-vulnerability-disclosure.yml
+- type: Security
+  url: https://radicle.dev/.well-known/security.txt
+- type: DomainSecurity
+  url: security/radicle-domain-security.yml
+- type: LLMsTxt
+  url: llms/radicle-llms.txt
+- type: AgentSkill
+  url: skills/_index.yml
+- type: MCPServer
+  url: mcp/radicle-mcp.yml
+- type: TermsOfService
+  url: https://radicle.dev/legal
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 20
+  pass: local-v1

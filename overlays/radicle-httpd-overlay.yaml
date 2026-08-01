@@ -1,0 +1,21 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Radicle HTTP API
+  version: 1.0.0
+extends: openapi/radicle-httpd-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-enriched: '2026-07-20'
+    x-apievangelist-method: searched
+    x-api-type: peer-to-peer-code-collaboration
+    x-error-format: custom-envelope
+    x-auth-model: public-read
+- target: $.info
+  update:
+    x-artifacts:
+      authentication: authentication/radicle-authentication.yml
+      errors: errors/radicle-problem-types.yml
+      conventions: conventions/radicle-conventions.yml
+      data-model: data-model/radicle-data-model.yml
+      lifecycle: lifecycle/radicle-lifecycle.yml

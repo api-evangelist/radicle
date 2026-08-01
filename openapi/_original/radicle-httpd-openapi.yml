@@ -1,0 +1,489 @@
+openapi: 3.1.0
+info:
+  title: Radicle HTTP API (radicle-httpd)
+  version: 6.1.0
+  x-generated: '2026-07-20'
+  x-method: searched
+  x-source: https://seed.radicle.xyz/api/v1
+  description: >
+    Radicle is a sovereign, peer-to-peer code collaboration stack built on Git.
+    Each Radicle node can run `radicle-httpd`, a lightweight HTTP daemon that
+    exposes a read-oriented JSON API over the node's local storage: repositories
+    (Radicle Object Bag / COBs), issues, patches, commits, trees, blobs, node
+    info and network statistics. This specification was derived by probing the
+    live public seed node at https://seed.radicle.xyz/api/v1 (radicle-httpd
+    0.25.0, apiVersion 6.1.0). Read endpoints are public and unauthenticated;
+    write operations on a self-hosted node require a signed session created with
+    the node's key. Identifiers use Radicle conventions: Repository IDs (`rad:`),
+    Node IDs (`z6Mk...`, a did:key), and DIDs (`did:key:...`).
+  contact:
+    name: Radicle
+    url: https://radicle.dev/
+  license:
+    name: MIT OR Apache-2.0
+servers:
+  - url: https://seed.radicle.xyz/api/v1
+    description: Public community seed node (read-only)
+  - url: https://{node}/api/v1
+    description: Any self-hosted radicle-httpd node
+    variables:
+      node:
+        default: seed.radicle.xyz
+tags:
+  - name: Service
+    description: API root and service metadata
+  - name: Repositories
+    description: Radicle repositories seeded by the node
+  - name: Issues
+    description: Repository issues (collaborative objects)
+  - name: Patches
+    description: Repository patches (change proposals)
+  - name: Source
+    description: Commits, trees, blobs and READMEs
+  - name: Node
+    description: Node identity, configuration and peers
+  - name: Stats
+    description: Aggregate node statistics
+paths:
+  /:
+    get:
+      tags: [Service]
+      operationId: getServiceRoot
+      summary: Service root
+      description: Returns service metadata, the node ID and the list of available link relations.
+      responses:
+        '200':
+          description: Service metadata
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Service' }
+  /repos:
+    get:
+      tags: [Repositories]
+      operationId: listRepos
+      summary: List seeded repositories
+      description: Lists repositories seeded by this node, with their project payload, delegates and visibility.
+      parameters:
+        - { name: page, in: query, required: false, schema: { type: integer, minimum: 0 } }
+        - { name: perPage, in: query, required: false, schema: { type: integer, minimum: 1 } }
+        - { name: show, in: query, required: false, schema: { type: string, enum: [all, pinned] } }
+      responses:
+        '200':
+          description: Array of repositories
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Repo' }
+  /repos/{rid}:
+    get:
+      tags: [Repositories]
+      operationId: getRepo
+      summary: Get a repository
+      parameters:
+        - $ref: '#/components/parameters/Rid'
+      responses:
+        '200':
+          description: Repository
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Repo' }
+        '404':
+          description: Repository not found
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+  /repos/{rid}/issues:
+    get:
+      tags: [Issues]
+      operationId: listIssues
+      summary: List repository issues
+      parameters:
+        - $ref: '#/components/parameters/Rid'
+        - { name: page, in: query, required: false, schema: { type: integer, minimum: 0 } }
+        - { name: perPage, in: query, required: false, schema: { type: integer, minimum: 1 } }
+        - { name: state, in: query, required: false, schema: { type: string, enum: [open, closed] } }
+      responses:
+        '200':
+          description: Array of issues
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Issue' }
+  /repos/{rid}/issues/{issueId}:
+    get:
+      tags: [Issues]
+      operationId: getIssue
+      summary: Get an issue
+      parameters:
+        - $ref: '#/components/parameters/Rid'
+        - { name: issueId, in: path, required: true, schema: { type: string } }
+      responses:
+        '200':
+          description: Issue
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Issue' }
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+  /repos/{rid}/patches:
+    get:
+      tags: [Patches]
+      operationId: listPatches
+      summary: List repository patches
+      parameters:
+        - $ref: '#/components/parameters/Rid'
+        - { name: page, in: query, required: false, schema: { type: integer, minimum: 0 } }
+        - { name: perPage, in: query, required: false, schema: { type: integer, minimum: 1 } }
+        - { name: state, in: query, required: false, schema: { type: string, enum: [open, draft, archived, merged] } }
+      responses:
+        '200':
+          description: Array of patches
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Patch' }
+  /repos/{rid}/patches/{patchId}:
+    get:
+      tags: [Patches]
+      operationId: getPatch
+      summary: Get a patch
+      parameters:
+        - $ref: '#/components/parameters/Rid'
+        - { name: patchId, in: path, required: true, schema: { type: string } }
+      responses:
+        '200':
+          description: Patch
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Patch' }
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+  /repos/{rid}/commits:
+    get:
+      tags: [Source]
+      operationId: listCommits
+      summary: List commits
+      parameters:
+        - $ref: '#/components/parameters/Rid'
+        - { name: parent, in: query, required: false, schema: { type: string } }
+        - { name: since, in: query, required: false, schema: { type: integer } }
+        - { name: until, in: query, required: false, schema: { type: integer } }
+        - { name: page, in: query, required: false, schema: { type: integer, minimum: 0 } }
+        - { name: perPage, in: query, required: false, schema: { type: integer, minimum: 1 } }
+      responses:
+        '200':
+          description: Array of commits
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Commit' }
+  /repos/{rid}/commits/{sha}:
+    get:
+      tags: [Source]
+      operationId: getCommit
+      summary: Get a commit
+      parameters:
+        - $ref: '#/components/parameters/Rid'
+        - { name: sha, in: path, required: true, schema: { type: string } }
+      responses:
+        '200':
+          description: Commit with diff
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Commit' }
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+  /repos/{rid}/activity:
+    get:
+      tags: [Repositories]
+      operationId: getRepoActivity
+      summary: Repository activity timeline
+      description: Returns an array of Unix timestamps representing repository activity.
+      parameters:
+        - $ref: '#/components/parameters/Rid'
+      responses:
+        '200':
+          description: Activity timestamps
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Activity' }
+  /repos/{rid}/tree/{sha}/{path}:
+    get:
+      tags: [Source]
+      operationId: getTree
+      summary: Get a source tree
+      parameters:
+        - $ref: '#/components/parameters/Rid'
+        - { name: sha, in: path, required: true, schema: { type: string } }
+        - { name: path, in: path, required: true, schema: { type: string } }
+      responses:
+        '200':
+          description: Tree listing
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Tree' }
+        '400':
+          description: Invalid revision or path
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+  /repos/{rid}/blob/{sha}/{path}:
+    get:
+      tags: [Source]
+      operationId: getBlob
+      summary: Get a file blob
+      parameters:
+        - $ref: '#/components/parameters/Rid'
+        - { name: sha, in: path, required: true, schema: { type: string } }
+        - { name: path, in: path, required: true, schema: { type: string } }
+      responses:
+        '200':
+          description: Blob content
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Blob' }
+        '400':
+          description: Invalid revision or path
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+  /repos/{rid}/readme/{sha}:
+    get:
+      tags: [Source]
+      operationId: getReadme
+      summary: Get the repository README at a revision
+      parameters:
+        - $ref: '#/components/parameters/Rid'
+        - { name: sha, in: path, required: true, schema: { type: string } }
+      responses:
+        '200':
+          description: README blob
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Blob' }
+        '400':
+          description: Invalid revision
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+  /node:
+    get:
+      tags: [Node]
+      operationId: getNode
+      summary: Get local node info
+      description: Returns the local node identity, agent, configuration and running state.
+      responses:
+        '200':
+          description: Node info
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Node' }
+  /nodes/{nid}:
+    get:
+      tags: [Node]
+      operationId: getNodeById
+      summary: Get a known node by Node ID
+      parameters:
+        - { name: nid, in: path, required: true, schema: { type: string } }
+      responses:
+        '200':
+          description: Node info
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Node' }
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+  /delegates/{did}/repos:
+    get:
+      tags: [Repositories]
+      operationId: getDelegateRepos
+      summary: List repositories delegated to a DID
+      parameters:
+        - { name: did, in: path, required: true, schema: { type: string } }
+      responses:
+        '200':
+          description: Array of repositories
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Repo' }
+  /stats:
+    get:
+      tags: [Stats]
+      operationId: getStats
+      summary: Get node statistics
+      responses:
+        '200':
+          description: Aggregate stats
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Stats' }
+components:
+  parameters:
+    Rid:
+      name: rid
+      in: path
+      required: true
+      description: Repository ID (e.g. rad:z6cFWeWpnZNHh9rUW8phgA3b5yGt)
+      schema: { type: string }
+  schemas:
+    Service:
+      type: object
+      properties:
+        message: { type: string }
+        service: { type: string, example: radicle-httpd }
+        version: { type: string, example: 0.25.0-unknown }
+        apiVersion: { type: string, example: 6.1.0 }
+        nid: { type: string }
+        path: { type: string }
+        links:
+          type: array
+          items:
+            type: object
+            properties:
+              href: { type: string }
+              rel: { type: string }
+              type: { type: string }
+    Repo:
+      type: object
+      properties:
+        rid: { type: string }
+        payloads: { type: object }
+        delegates:
+          type: array
+          items: { $ref: '#/components/schemas/Did' }
+        threshold: { type: integer }
+        visibility:
+          type: object
+          properties:
+            type: { type: string, enum: [public, private] }
+        seeding: { type: integer }
+        refs: { type: object }
+    Did:
+      type: object
+      properties:
+        id: { type: string, description: DID (did:key:...) }
+        alias: { type: string }
+    Issue:
+      type: object
+      properties:
+        id: { type: string }
+        author: { $ref: '#/components/schemas/Did' }
+        title: { type: string }
+        state:
+          type: object
+          properties:
+            status: { type: string, enum: [open, closed] }
+        assignees:
+          type: array
+          items: { $ref: '#/components/schemas/Did' }
+        labels:
+          type: array
+          items: { type: string }
+        discussion:
+          type: array
+          items: { type: object }
+    Patch:
+      type: object
+      properties:
+        id: { type: string }
+        author: { $ref: '#/components/schemas/Did' }
+        title: { type: string }
+        state:
+          type: object
+          properties:
+            status: { type: string, enum: [open, draft, archived, merged] }
+        target: { type: string }
+        labels:
+          type: array
+          items: { type: string }
+        merges:
+          type: array
+          items: { type: object }
+        assignees:
+          type: array
+          items: { $ref: '#/components/schemas/Did' }
+        revisions:
+          type: array
+          items: { type: object }
+    Commit:
+      type: object
+      properties:
+        id: { type: string }
+        author:
+          type: object
+          properties:
+            name: { type: string }
+            email: { type: string }
+        summary: { type: string }
+        description: { type: string }
+        parents:
+          type: array
+          items: { type: string }
+        committer:
+          type: object
+          properties:
+            name: { type: string }
+            email: { type: string }
+            time: { type: integer }
+    Activity:
+      type: object
+      properties:
+        activity:
+          type: array
+          items: { type: integer, description: Unix timestamp }
+    Tree:
+      type: object
+      properties:
+        entries:
+          type: array
+          items: { type: object }
+        lastCommit: { type: object }
+        name: { type: string }
+        path: { type: string }
+    Blob:
+      type: object
+      properties:
+        binary: { type: boolean }
+        content: { type: string }
+        name: { type: string }
+        path: { type: string }
+        lastCommit: { type: object }
+    Node:
+      type: object
+      properties:
+        id: { type: string }
+        agent: { type: [string, 'null'] }
+        config: { type: object }
+        state: { type: object }
+    Stats:
+      type: object
+      properties:
+        repos:
+          type: object
+          properties:
+            total: { type: integer }
+    Error:
+      type: object
+      description: Error envelope returned by radicle-httpd.
+      properties:
+        error: { type: string }
+        code: { type: integer }
+      required: [error, code]

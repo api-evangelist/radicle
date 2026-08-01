@@ -1,0 +1,33 @@
+generated: '2026-07-20'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: radicle.dev
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 28 15:44:54 2026 GMT
+  hsts: false
+- host: radicle.network
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 18 21:39:52 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: seed.radicle.xyz
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep  7 12:13:19 2026 GMT
+  hsts: false
+domains:
+- domain: radicle.dev
+  dnssec: true
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: reject
+- domain: radicle.network
+  dnssec: true
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: reject

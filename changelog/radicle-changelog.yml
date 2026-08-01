@@ -1,0 +1,41 @@
+generated: '2026-07-20'
+method: searched
+source: https://radicle.dev/ (dated release announcements)
+scheme: semver
+current_version: 1.9.1
+docs: https://github.com/radicle-dev/heartwood/blob/master/CHANGELOG.md
+entries:
+- version: 1.9.1
+  date: '2026-05-22'
+  url: https://radicle.dev/2025/05/30/radicle-with-github-actions.html
+  highlights: Patch release.
+- version: 1.9.0
+  date: '2026-05-19'
+  url: https://radicle.dev/2026/05/19/radicle-1.9.0.html
+  highlights: Feature release.
+- version: 1.8.0
+  date: '2026-03-30'
+  url: https://radicle.dev/2026/03/30/radicle-1.8.0.html
+  highlights: >-
+    Feature release; coincided with disclosure of a vulnerability in signed
+    references (see security advisory 2026-03-30).
+- version: 1.7.1
+  date: '2026-03-20'
+  url: https://radicle.dev/2026/03/20/radicle-1.7.1.html
+  highlights: Patch release.
+- version: 1.7.0
+  date: '2026-03-18'
+  url: https://radicle.dev/2026/03/18/radicle-1.7.0.html
+  highlights: Feature release.
+- version: 1.6.0
+  date: '2026-01-14'
+  url: https://radicle.dev/2026/01/14/radicle-1.6.0.html
+  highlights: Feature release.
+- version: 1.5.0
+  date: '2025-09-30'
+  url: https://radicle.dev/2025/09/30/radicle-1.5.0.html
+  highlights: Feature release.
+- version: 1.0.0
+  date: '2024-09-10'
+  url: https://radicle.dev/2024/09/10/radicle-1.0.0.html
+  highlights: First stable release of Radicle.

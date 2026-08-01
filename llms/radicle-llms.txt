@@ -1,0 +1,33 @@
+# Radicle
+
+> Radicle is a sovereign, peer-to-peer code collaboration stack built on Git, backed by Electric Capital. Every user runs a node; repositories, issues and patches replicate across the network as cryptographically-signed Collaborative Objects (COBs). Each node can run radicle-httpd, a lightweight HTTP daemon exposing a read-oriented JSON API over the node's storage.
+
+## APIs
+
+- [Radicle HTTP API](https://seed.radicle.xyz/api/v1): radicle-httpd JSON API (apiVersion 6.1.0) — repos, issues, patches, commits, source trees, node info, stats. Public read; key-based session auth for writes on self-hosted nodes.
+
+## Specs
+
+- [OpenAPI 3.1](openapi/radicle-httpd-openapi.yml): derived from the live seed node.
+- [Authentication](authentication/radicle-authentication.yml)
+- [Error catalog](errors/radicle-problem-types.yml)
+- [Conventions](conventions/radicle-conventions.yml)
+- [Data model](data-model/radicle-data-model.yml)
+- [Conformance](conformance/radicle-conformance.yml)
+- [MCP tools (candidate)](mcp/radicle-mcp.yml)
+- [Agent skills](skills/_index.yml)
+
+## Docs
+
+- [Guides](https://radicle.dev/guides)
+- [Quick start](https://radicle.dev/guides/quick-start/)
+- [FAQ](https://radicle.dev/faq)
+- [Downloads](https://radicle.dev/download)
+- [GitHub (radicle-dev)](https://github.com/radicle-dev)
+- [Heartwood protocol & stack](https://github.com/radicle-dev/heartwood)
+- [Community (Zulip)](https://radicle.zulipchat.com)
+- [Security.txt](https://radicle.dev/.well-known/security.txt)
+
+## CLI
+
+- rad — the Radicle command-line tool. Install: `curl -sSf https://radicle.xyz/install | sh`. See cli/radicle-cli.yml.

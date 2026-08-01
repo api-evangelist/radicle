@@ -1,0 +1,12 @@
+generated: '2026-07-20'
+method: generated
+source: openapi/radicle-httpd-openapi.yml
+skills:
+- file: radicle-browse-repository.md
+  name: Browse a Radicle repository
+  api: openapi/radicle-httpd-openapi.yml
+  operations: [listRepos, getRepo, listIssues, listPatches, listCommits, getRepoActivity]
+- file: radicle-read-source-tree.md
+  name: Read Radicle source code
+  api: openapi/radicle-httpd-openapi.yml
+  operations: [getRepo, getTree, getBlob, getReadme, getCommit]

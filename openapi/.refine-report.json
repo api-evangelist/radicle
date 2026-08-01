@@ -1,0 +1,26 @@
+{
+  "provider": "radicle",
+  "sources": [
+    "radicle-issues-api-openapi.yml",
+    "radicle-node-api-openapi.yml",
+    "radicle-patches-api-openapi.yml",
+    "radicle-repositories-api-openapi.yml",
+    "radicle-service-api-openapi.yml",
+    "radicle-source-api-openapi.yml",
+    "radicle-stats-api-openapi.yml"
+  ],
+  "outputs": [
+    "radicle-issues-api-openapi.yml",
+    "radicle-node-api-openapi.yml",
+    "radicle-patches-api-openapi.yml",
+    "radicle-repositories-api-openapi.yml",
+    "radicle-service-api-openapi.yml",
+    "radicle-source-api-openapi.yml",
+    "radicle-stats-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

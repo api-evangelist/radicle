@@ -1,0 +1,45 @@
+generated: '2026-07-20'
+method: derived
+status: candidate
+source: openapi/radicle-httpd-openapi.yml
+notes: >-
+  No official hosted/remote MCP server was found for Radicle. The following is a
+  candidate tool list derived one-per-operation from the radicle-httpd OpenAPI,
+  suitable for a read-only MCP wrapper over a public seed node.
+server:
+  name: radicle
+  transport: http
+tools:
+- name: get_service_root
+  description: Get radicle-httpd service metadata and node ID.
+  source_operation: openapi/radicle-httpd-openapi.yml#getServiceRoot
+- name: list_repos
+  description: List repositories seeded by the node.
+  source_operation: openapi/radicle-httpd-openapi.yml#listRepos
+- name: get_repo
+  description: Get a repository by RID.
+  source_operation: openapi/radicle-httpd-openapi.yml#getRepo
+- name: list_issues
+  description: List issues for a repository.
+  source_operation: openapi/radicle-httpd-openapi.yml#listIssues
+- name: get_issue
+  description: Get an issue by id.
+  source_operation: openapi/radicle-httpd-openapi.yml#getIssue
+- name: list_patches
+  description: List patches for a repository.
+  source_operation: openapi/radicle-httpd-openapi.yml#listPatches
+- name: get_patch
+  description: Get a patch by id.
+  source_operation: openapi/radicle-httpd-openapi.yml#getPatch
+- name: list_commits
+  description: List commits for a repository.
+  source_operation: openapi/radicle-httpd-openapi.yml#listCommits
+- name: get_tree
+  description: Get a source tree at a revision/path.
+  source_operation: openapi/radicle-httpd-openapi.yml#getTree
+- name: get_node
+  description: Get local node info.
+  source_operation: openapi/radicle-httpd-openapi.yml#getNode
+- name: get_stats
+  description: Get aggregate node statistics.
+  source_operation: openapi/radicle-httpd-openapi.yml#getStats

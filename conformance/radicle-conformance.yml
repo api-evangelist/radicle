@@ -1,0 +1,29 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/radicle-httpd-openapi.yml + live probe of seed.radicle.xyz
+standards:
+- id: oauth2
+  conforms: false
+  evidence: No OAuth; identity is key-based (DID/did:key).
+- id: oidc
+  conforms: false
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors use a custom {error, code} envelope, not application/problem+json.
+- id: rfc9116-security-txt
+  conforms: true
+  evidence: https://radicle.dev/.well-known/security.txt
+- id: semver
+  conforms: true
+  evidence: CHANGELOG.md follows Semantic Versioning; releases tagged 1.x.
+- id: json-api
+  conforms: false
+- id: pagination
+  conforms: true
+  evidence: page/perPage query parameters on list endpoints.
+- id: did-key
+  conforms: true
+  evidence: Peers and actors identified by did:key (W3C DID / did:key method).
+- id: git
+  conforms: true
+  evidence: Built on Git; commits, trees, blobs exposed over the API.

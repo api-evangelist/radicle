@@ -1,0 +1,41 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/radicle-httpd-openapi.yml + live probe of seed.radicle.xyz
+authentication:
+  style: none-for-read
+  detail: Public GET endpoints require no auth; see authentication/radicle-authentication.yml
+idempotency:
+  supported: false
+  detail: >-
+    The public radicle-httpd surface is read-only (GET), so idempotency keys do
+    not apply. No Idempotency-Key header is documented.
+pagination:
+  style: page-number
+  params: [page, perPage]
+  detail: >-
+    List endpoints (repos, issues, patches, commits) accept `page` (0-indexed)
+    and `perPage` query parameters. Responses are bare JSON arrays; no envelope
+    or total-count field is returned.
+versioning:
+  style: uri-path-and-header
+  detail: >-
+    The API is served under /api/v1. The service root additionally reports an
+    `apiVersion` (semver, e.g. 6.1.0) and the radicle-httpd `version`.
+error_envelope:
+  format: custom
+  shape: { error: string, code: integer }
+  ref: errors/radicle-problem-types.yml
+rate_limiting:
+  signaled: false
+  detail: No rate-limit headers observed on the public seed node.
+content_type: application/json
+cors:
+  detail: access-control-allow-origin "*" observed; API is browser-accessible.
+identifiers:
+  repository: "rad:<base58> (Repository ID / RID)"
+  node: "z6Mk... (Node ID / NID, a did:key)"
+  actor: "did:key:... (DID)"
+cross_links:
+  errors: errors/radicle-problem-types.yml
+  authentication: authentication/radicle-authentication.yml
+  lifecycle: lifecycle/radicle-lifecycle.yml

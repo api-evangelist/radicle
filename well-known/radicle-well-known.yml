@@ -1,0 +1,19 @@
+generated: '2026-07-20'
+method: searched
+host: https://radicle.dev
+documents:
+- path: /.well-known/security.txt
+  status: 200
+  file: radicle-security.txt
+- path: /.well-known/openid-configuration
+  status: 404
+- path: /.well-known/oauth-authorization-server
+  status: 404
+- path: /.well-known/api-catalog
+  status: 404
+- path: /.well-known/ai-plugin.json
+  status: 404
+notes: >-
+  Radicle publishes an RFC 9116 security.txt (Contact security@radicle.dev, age
+  encryption recipients, Expires 2030). No OIDC/OAuth discovery documents — the
+  Radicle HTTP API is public-read and uses key-based session auth, not OAuth.

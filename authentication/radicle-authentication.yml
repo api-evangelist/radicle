@@ -1,0 +1,27 @@
+generated: '2026-07-20'
+method: searched
+source: https://seed.radicle.xyz/api/v1 (live probe) + radicle-httpd behavior
+docs: https://radicle.dev/guides
+summary:
+  types: [none, session]
+  api_key_in: []
+  oauth2_flows: []
+  notes: >-
+    Radicle uses no accounts, passwords or OAuth. Identity is cryptographic:
+    every peer is a DID (did:key, e.g. z6Mk...). The radicle-httpd JSON API is
+    read-only and unauthenticated for all catalog/read endpoints exposed by a
+    public seed node (repos, issues, patches, commits, trees, node, stats).
+schemes:
+- name: publicRead
+  type: none
+  applies_to: All GET endpoints on a public seed node
+  sources: [openapi/radicle-httpd-openapi.yml, live probe of seed.radicle.xyz]
+- name: nodeSession
+  type: session
+  description: >-
+    Write-capable radicle-httpd deployments authenticate a session with the
+    node operator's key: a client requests a session, then authorizes it by
+    signing a challenge with the Radicle key (via the desktop app / CLI). Public
+    community seeds (e.g. seed.radicle.xyz) expose read endpoints only, so no
+    session is required for the surface captured here.
+  sources: [radicle-httpd]
