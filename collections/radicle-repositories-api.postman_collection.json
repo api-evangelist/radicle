@@ -1,0 +1,437 @@
+{
+  "item": [
+    {
+      "id": "5ac3cab8-3342-49b6-8215-b9eb7bd07bcf",
+      "name": "Repositories",
+      "description": {
+        "content": "Radicle repositories seeded by the node",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6b6a2608-8f8c-4cbc-bcca-53f6e95319d4",
+          "name": "List seeded repositories",
+          "request": {
+            "name": "List seeded repositories",
+            "description": {
+              "content": "Lists repositories seeded by this node, with their project payload, delegates and visibility.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "repos"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "perPage",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "show",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "442b6752-7735-4dd9-a7ef-4ba81a1327c7",
+              "name": "Array of repositories",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "repos"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "perPage",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "show",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"rid\": \"string\",\n    \"payloads\": {},\n    \"delegates\": [\n      {\n        \"id\": \"string\",\n        \"alias\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"alias\": \"string\"\n      }\n    ],\n    \"threshold\": 7131,\n    \"visibility\": {\n      \"type\": \"public\"\n    },\n    \"seeding\": 7065,\n    \"refs\": {}\n  },\n  {\n    \"rid\": \"string\",\n    \"payloads\": {},\n    \"delegates\": [\n      {\n        \"id\": \"string\",\n        \"alias\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"alias\": \"string\"\n      }\n    ],\n    \"threshold\": 1245,\n    \"visibility\": {\n      \"type\": \"public\"\n    },\n    \"seeding\": 6722,\n    \"refs\": {}\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d7f486fd-3fee-4cb8-935a-a677f68c5ef7",
+          "name": "Get a repository",
+          "request": {
+            "name": "Get a repository",
+            "description": {},
+            "url": {
+              "path": [
+                "repos",
+                ":rid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "rid",
+                  "description": "(Required) Repository ID (e.g. rad:z6cFWeWpnZNHh9rUW8phgA3b5yGt)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7df1b929-a5a7-4f94-9046-8f241081ed7e",
+              "name": "Repository",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "repos",
+                    ":rid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rid",
+                      "description": "(Required) Repository ID (e.g. rad:z6cFWeWpnZNHh9rUW8phgA3b5yGt)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rid\": \"string\",\n  \"payloads\": {},\n  \"delegates\": [\n    {\n      \"id\": \"string\",\n      \"alias\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"alias\": \"string\"\n    }\n  ],\n  \"threshold\": 29,\n  \"visibility\": {\n    \"type\": \"private\"\n  },\n  \"seeding\": 1305,\n  \"refs\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c3d98754-6992-4e34-baa9-30076f072f06",
+              "name": "Repository not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "repos",
+                    ":rid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rid",
+                      "description": "(Required) Repository ID (e.g. rad:z6cFWeWpnZNHh9rUW8phgA3b5yGt)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 8552\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4776456d-0584-445a-97a9-c42132607247",
+          "name": "Repository activity timeline",
+          "request": {
+            "name": "Repository activity timeline",
+            "description": {
+              "content": "Returns an array of Unix timestamps representing repository activity.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "repos",
+                ":rid",
+                "activity"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "rid",
+                  "description": "(Required) Repository ID (e.g. rad:z6cFWeWpnZNHh9rUW8phgA3b5yGt)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "33307195-9ac6-4b3b-acd7-3a996eb7cbe4",
+              "name": "Activity timestamps",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "repos",
+                    ":rid",
+                    "activity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rid",
+                      "description": "(Required) Repository ID (e.g. rad:z6cFWeWpnZNHh9rUW8phgA3b5yGt)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"activity\": [\n    9787,\n    2256\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9b609449-b386-45e6-9fc8-e5fbbb0652bc",
+          "name": "List repositories delegated to a DID",
+          "request": {
+            "name": "List repositories delegated to a DID",
+            "description": {},
+            "url": {
+              "path": [
+                "delegates",
+                ":did",
+                "repos"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "did",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "94441bf9-5c04-4c15-9a9d-f8bd3c472c0d",
+              "name": "Array of repositories",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "delegates",
+                    ":did",
+                    "repos"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "did",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"rid\": \"string\",\n    \"payloads\": {},\n    \"delegates\": [\n      {\n        \"id\": \"string\",\n        \"alias\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"alias\": \"string\"\n      }\n    ],\n    \"threshold\": 7131,\n    \"visibility\": {\n      \"type\": \"public\"\n    },\n    \"seeding\": 7065,\n    \"refs\": {}\n  },\n  {\n    \"rid\": \"string\",\n    \"payloads\": {},\n    \"delegates\": [\n      {\n        \"id\": \"string\",\n        \"alias\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"alias\": \"string\"\n      }\n    ],\n    \"threshold\": 1245,\n    \"visibility\": {\n      \"type\": \"public\"\n    },\n    \"seeding\": 6722,\n    \"refs\": {}\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://seed.radicle.xyz/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "5fc89b04-82d0-4e02-94ff-7eade9a37c96",
+    "name": "Radicle HTTP API (radicle-httpd) Issues Repositories API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Radicle is a sovereign, peer-to-peer code collaboration stack built on Git. Each Radicle node can run `radicle-httpd`, a lightweight HTTP daemon that exposes a read-oriented JSON API over the node's local storage: repositories (Radicle Object Bag / COBs), issues, patches, commits, trees, blobs, node info and network statistics. This specification was derived by probing the live public seed node at https://seed.radicle.xyz/api/v1 (radicle-httpd 0.25.0, apiVersion 6.1.0). Read endpoints are public and unauthenticated; write operations on a self-hosted node require a signed session created with the node's key. Identifiers use Radicle conventions: Repository IDs (`rad:`), Node IDs (`z6Mk...`, a did:key), and DIDs (`did:key:...`).\n\n\nContact Support:\n Name: Radicle",
+      "type": "text/plain"
+    }
+  }
+}

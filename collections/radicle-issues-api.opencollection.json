@@ -1,0 +1,76 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Radicle HTTP API (radicle-httpd) Issues API",
+    "version": "6.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Issues",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List repository issues",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://seed.radicle.xyz/api/v1/repos/:rid/issues",
+            "params": [
+              {
+                "name": "rid",
+                "value": "",
+                "type": "path",
+                "description": "Repository ID (e.g. rad:z6cFWeWpnZNHh9rUW8phgA3b5yGt)"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "perPage",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List repository issues"
+        },
+        {
+          "info": {
+            "name": "Get an issue",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://seed.radicle.xyz/api/v1/repos/:rid/issues/:issueId",
+            "params": [
+              {
+                "name": "rid",
+                "value": "",
+                "type": "path",
+                "description": "Repository ID (e.g. rad:z6cFWeWpnZNHh9rUW8phgA3b5yGt)"
+              },
+              {
+                "name": "issueId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get an issue"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

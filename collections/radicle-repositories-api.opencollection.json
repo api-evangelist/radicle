@@ -1,0 +1,102 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Radicle HTTP API (radicle-httpd) Issues Repositories API",
+    "version": "6.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Repositories",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List seeded repositories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://seed.radicle.xyz/api/v1/repos",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "perPage",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "show",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Lists repositories seeded by this node, with their project payload, delegates and visibility."
+        },
+        {
+          "info": {
+            "name": "Get a repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://seed.radicle.xyz/api/v1/repos/:rid",
+            "params": [
+              {
+                "name": "rid",
+                "value": "",
+                "type": "path",
+                "description": "Repository ID (e.g. rad:z6cFWeWpnZNHh9rUW8phgA3b5yGt)"
+              }
+            ]
+          },
+          "docs": "Get a repository"
+        },
+        {
+          "info": {
+            "name": "Repository activity timeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://seed.radicle.xyz/api/v1/repos/:rid/activity",
+            "params": [
+              {
+                "name": "rid",
+                "value": "",
+                "type": "path",
+                "description": "Repository ID (e.g. rad:z6cFWeWpnZNHh9rUW8phgA3b5yGt)"
+              }
+            ]
+          },
+          "docs": "Returns an array of Unix timestamps representing repository activity."
+        },
+        {
+          "info": {
+            "name": "List repositories delegated to a DID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://seed.radicle.xyz/api/v1/delegates/:did/repos",
+            "params": [
+              {
+                "name": "did",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List repositories delegated to a DID"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,168 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Radicle HTTP API (radicle-httpd) Issues Source API",
+    "version": "6.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Source",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List commits",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://seed.radicle.xyz/api/v1/repos/:rid/commits",
+            "params": [
+              {
+                "name": "rid",
+                "value": "",
+                "type": "path",
+                "description": "Repository ID (e.g. rad:z6cFWeWpnZNHh9rUW8phgA3b5yGt)"
+              },
+              {
+                "name": "parent",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "since",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "until",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "perPage",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List commits"
+        },
+        {
+          "info": {
+            "name": "Get a commit",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://seed.radicle.xyz/api/v1/repos/:rid/commits/:sha",
+            "params": [
+              {
+                "name": "rid",
+                "value": "",
+                "type": "path",
+                "description": "Repository ID (e.g. rad:z6cFWeWpnZNHh9rUW8phgA3b5yGt)"
+              },
+              {
+                "name": "sha",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a commit"
+        },
+        {
+          "info": {
+            "name": "Get a source tree",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://seed.radicle.xyz/api/v1/repos/:rid/tree/:sha/:path",
+            "params": [
+              {
+                "name": "rid",
+                "value": "",
+                "type": "path",
+                "description": "Repository ID (e.g. rad:z6cFWeWpnZNHh9rUW8phgA3b5yGt)"
+              },
+              {
+                "name": "sha",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "path",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a source tree"
+        },
+        {
+          "info": {
+            "name": "Get a file blob",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://seed.radicle.xyz/api/v1/repos/:rid/blob/:sha/:path",
+            "params": [
+              {
+                "name": "rid",
+                "value": "",
+                "type": "path",
+                "description": "Repository ID (e.g. rad:z6cFWeWpnZNHh9rUW8phgA3b5yGt)"
+              },
+              {
+                "name": "sha",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "path",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a file blob"
+        },
+        {
+          "info": {
+            "name": "Get the repository README at a revision",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://seed.radicle.xyz/api/v1/repos/:rid/readme/:sha",
+            "params": [
+              {
+                "name": "rid",
+                "value": "",
+                "type": "path",
+                "description": "Repository ID (e.g. rad:z6cFWeWpnZNHh9rUW8phgA3b5yGt)"
+              },
+              {
+                "name": "sha",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get the repository README at a revision"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

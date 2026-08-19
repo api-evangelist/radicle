@@ -2,10 +2,9 @@ generated: '2026-07-20'
 method: derived
 status: candidate
 source: openapi/radicle-httpd-openapi.yml
-notes: >-
-  No official hosted/remote MCP server was found for Radicle. The following is a
-  candidate tool list derived one-per-operation from the radicle-httpd OpenAPI,
-  suitable for a read-only MCP wrapper over a public seed node.
+notes: No official hosted/remote MCP server was found for Radicle. The following is a candidate tool list
+  derived one-per-operation from the radicle-httpd OpenAPI, suitable for a read-only MCP wrapper over
+  a public seed node.
 server:
   name: radicle
   transport: http
@@ -43,3 +42,9 @@ tools:
 - name: get_stats
   description: Get aggregate node statistics.
   source_operation: openapi/radicle-httpd-openapi.yml#getStats
+deployment:
+  mode: none
+  verified: derived
+  tools: 11
+  checked: '2026-08-12'
+  source: catalog MCP census

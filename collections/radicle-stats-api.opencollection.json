@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Radicle HTTP API (radicle-httpd) Issues Stats API",
+    "version": "6.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Stats",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get node statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://seed.radicle.xyz/api/v1/stats"
+          },
+          "docs": "Get node statistics"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

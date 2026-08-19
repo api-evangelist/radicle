@@ -1,0 +1,304 @@
+{
+  "item": [
+    {
+      "id": "ba6d6503-c971-4540-8f45-7a4ae676be0b",
+      "name": "Patches",
+      "description": {
+        "content": "Repository patches (change proposals)",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a43f50bc-744a-4c2c-83ac-3ea7e9ca9e54",
+          "name": "List repository patches",
+          "request": {
+            "name": "List repository patches",
+            "description": {},
+            "url": {
+              "path": [
+                "repos",
+                ":rid",
+                "patches"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "perPage",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "rid",
+                  "description": "(Required) Repository ID (e.g. rad:z6cFWeWpnZNHh9rUW8phgA3b5yGt)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4490b63d-438b-4283-96ab-a18326a11e00",
+              "name": "Array of patches",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "repos",
+                    ":rid",
+                    "patches"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "perPage",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rid",
+                      "description": "(Required) Repository ID (e.g. rad:z6cFWeWpnZNHh9rUW8phgA3b5yGt)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"author\": {\n      \"id\": \"string\",\n      \"alias\": \"string\"\n    },\n    \"title\": \"string\",\n    \"state\": {\n      \"status\": \"archived\"\n    },\n    \"target\": \"string\",\n    \"labels\": [\n      \"string\",\n      \"string\"\n    ],\n    \"assignees\": [\n      {\n        \"id\": \"string\",\n        \"alias\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"alias\": \"string\"\n      }\n    ]\n  },\n  {\n    \"id\": \"string\",\n    \"author\": {\n      \"id\": \"string\",\n      \"alias\": \"string\"\n    },\n    \"title\": \"string\",\n    \"state\": {\n      \"status\": \"open\"\n    },\n    \"target\": \"string\",\n    \"labels\": [\n      \"string\",\n      \"string\"\n    ],\n    \"assignees\": [\n      {\n        \"id\": \"string\",\n        \"alias\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"alias\": \"string\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "09da458d-54f6-43c4-8c7d-c0a1d9aee737",
+          "name": "Get a patch",
+          "request": {
+            "name": "Get a patch",
+            "description": {},
+            "url": {
+              "path": [
+                "repos",
+                ":rid",
+                "patches",
+                ":patchId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "rid",
+                  "description": "(Required) Repository ID (e.g. rad:z6cFWeWpnZNHh9rUW8phgA3b5yGt)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "patchId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9e62bba2-1773-4045-931e-c8a87e19b43b",
+              "name": "Patch",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "repos",
+                    ":rid",
+                    "patches",
+                    ":patchId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rid",
+                      "description": "(Required) Repository ID (e.g. rad:z6cFWeWpnZNHh9rUW8phgA3b5yGt)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "patchId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"author\": {\n    \"id\": \"string\",\n    \"alias\": \"string\"\n  },\n  \"title\": \"string\",\n  \"state\": {\n    \"status\": \"archived\"\n  },\n  \"target\": \"string\",\n  \"labels\": [\n    \"string\",\n    \"string\"\n  ],\n  \"assignees\": [\n    {\n      \"id\": \"string\",\n      \"alias\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"alias\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e31418fa-f393-4a54-904c-e291f6097353",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "repos",
+                    ":rid",
+                    "patches",
+                    ":patchId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rid",
+                      "description": "(Required) Repository ID (e.g. rad:z6cFWeWpnZNHh9rUW8phgA3b5yGt)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "patchId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 6214\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://seed.radicle.xyz/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "6571da91-4a26-42f8-9336-543074eed81d",
+    "name": "Radicle HTTP API (radicle-httpd) Issues Patches API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Radicle is a sovereign, peer-to-peer code collaboration stack built on Git. Each Radicle node can run `radicle-httpd`, a lightweight HTTP daemon that exposes a read-oriented JSON API over the node's local storage: repositories (Radicle Object Bag / COBs), issues, patches, commits, trees, blobs, node info and network statistics. This specification was derived by probing the live public seed node at https://seed.radicle.xyz/api/v1 (radicle-httpd 0.25.0, apiVersion 6.1.0). Read endpoints are public and unauthenticated; write operations on a self-hosted node require a signed session created with the node's key. Identifiers use Radicle conventions: Repository IDs (`rad:`), Node IDs (`z6Mk...`, a did:key), and DIDs (`did:key:...`).\n\n\nContact Support:\n Name: Radicle",
+      "type": "text/plain"
+    }
+  }
+}

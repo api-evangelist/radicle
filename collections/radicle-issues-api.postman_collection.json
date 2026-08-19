@@ -1,0 +1,304 @@
+{
+  "item": [
+    {
+      "id": "3fef99bd-d0bb-488b-ba01-6058c1278d01",
+      "name": "Issues",
+      "description": {
+        "content": "Repository issues (collaborative objects)",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f378341f-a16d-4ed0-883b-7bf41dd46acd",
+          "name": "List repository issues",
+          "request": {
+            "name": "List repository issues",
+            "description": {},
+            "url": {
+              "path": [
+                "repos",
+                ":rid",
+                "issues"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "perPage",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "rid",
+                  "description": "(Required) Repository ID (e.g. rad:z6cFWeWpnZNHh9rUW8phgA3b5yGt)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "62f0ccde-7745-45a6-9b47-0e0f1a714be2",
+              "name": "Array of issues",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "repos",
+                    ":rid",
+                    "issues"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "perPage",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rid",
+                      "description": "(Required) Repository ID (e.g. rad:z6cFWeWpnZNHh9rUW8phgA3b5yGt)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"author\": {\n      \"id\": \"string\",\n      \"alias\": \"string\"\n    },\n    \"title\": \"string\",\n    \"state\": {\n      \"status\": \"closed\"\n    },\n    \"assignees\": [\n      {\n        \"id\": \"string\",\n        \"alias\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"alias\": \"string\"\n      }\n    ],\n    \"labels\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  {\n    \"id\": \"string\",\n    \"author\": {\n      \"id\": \"string\",\n      \"alias\": \"string\"\n    },\n    \"title\": \"string\",\n    \"state\": {\n      \"status\": \"open\"\n    },\n    \"assignees\": [\n      {\n        \"id\": \"string\",\n        \"alias\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"alias\": \"string\"\n      }\n    ],\n    \"labels\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f09692e1-6590-4b10-912e-7a0b3626a2cd",
+          "name": "Get an issue",
+          "request": {
+            "name": "Get an issue",
+            "description": {},
+            "url": {
+              "path": [
+                "repos",
+                ":rid",
+                "issues",
+                ":issueId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "rid",
+                  "description": "(Required) Repository ID (e.g. rad:z6cFWeWpnZNHh9rUW8phgA3b5yGt)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "issueId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d2466753-9be7-48bd-a3f8-5900ef5a54cf",
+              "name": "Issue",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "repos",
+                    ":rid",
+                    "issues",
+                    ":issueId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rid",
+                      "description": "(Required) Repository ID (e.g. rad:z6cFWeWpnZNHh9rUW8phgA3b5yGt)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "issueId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"author\": {\n    \"id\": \"string\",\n    \"alias\": \"string\"\n  },\n  \"title\": \"string\",\n  \"state\": {\n    \"status\": \"closed\"\n  },\n  \"assignees\": [\n    {\n      \"id\": \"string\",\n      \"alias\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"alias\": \"string\"\n    }\n  ],\n  \"labels\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5db3c5e6-6522-4211-8524-66f4273b09ef",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "repos",
+                    ":rid",
+                    "issues",
+                    ":issueId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rid",
+                      "description": "(Required) Repository ID (e.g. rad:z6cFWeWpnZNHh9rUW8phgA3b5yGt)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "issueId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 6446\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://seed.radicle.xyz/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "23e9e5ed-70ec-4154-a344-43be15d11676",
+    "name": "Radicle HTTP API (radicle-httpd) Issues API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Radicle is a sovereign, peer-to-peer code collaboration stack built on Git. Each Radicle node can run `radicle-httpd`, a lightweight HTTP daemon that exposes a read-oriented JSON API over the node's local storage: repositories (Radicle Object Bag / COBs), issues, patches, commits, trees, blobs, node info and network statistics. This specification was derived by probing the live public seed node at https://seed.radicle.xyz/api/v1 (radicle-httpd 0.25.0, apiVersion 6.1.0). Read endpoints are public and unauthenticated; write operations on a self-hosted node require a signed session created with the node's key. Identifiers use Radicle conventions: Repository IDs (`rad:`), Node IDs (`z6Mk...`, a did:key), and DIDs (`did:key:...`).\n\n\nContact Support:\n Name: Radicle",
+      "type": "text/plain"
+    }
+  }
+}

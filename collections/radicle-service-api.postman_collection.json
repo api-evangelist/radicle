@@ -1,0 +1,102 @@
+{
+  "item": [
+    {
+      "id": "8e24565c-d2a3-4e6b-9823-2845315199e2",
+      "name": "Service",
+      "description": {
+        "content": "API root and service metadata",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bdd878a1-e754-4d4e-b579-9ffeac883b61",
+          "name": "Service root",
+          "request": {
+            "name": "Service root",
+            "description": {
+              "content": "Returns service metadata, the node ID and the list of available link relations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "769a1eb3-2dbc-4aca-987f-f4af2c7a88e4",
+              "name": "Service metadata",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"service\": \"radicle-httpd\",\n  \"version\": \"0.25.0-unknown\",\n  \"apiVersion\": \"6.1.0\",\n  \"nid\": \"string\",\n  \"path\": \"string\",\n  \"links\": [\n    {\n      \"href\": \"string\",\n      \"rel\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"href\": \"string\",\n      \"rel\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://seed.radicle.xyz/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "65e14559-e908-400c-a1c6-e79a7c0f909c",
+    "name": "Radicle HTTP API (radicle-httpd) Issues Service API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Radicle is a sovereign, peer-to-peer code collaboration stack built on Git. Each Radicle node can run `radicle-httpd`, a lightweight HTTP daemon that exposes a read-oriented JSON API over the node's local storage: repositories (Radicle Object Bag / COBs), issues, patches, commits, trees, blobs, node info and network statistics. This specification was derived by probing the live public seed node at https://seed.radicle.xyz/api/v1 (radicle-httpd 0.25.0, apiVersion 6.1.0). Read endpoints are public and unauthenticated; write operations on a self-hosted node require a signed session created with the node's key. Identifiers use Radicle conventions: Repository IDs (`rad:`), Node IDs (`z6Mk...`, a did:key), and DIDs (`did:key:...`).\n\n\nContact Support:\n Name: Radicle",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Radicle HTTP API (radicle-httpd) Issues Node API",
+    "version": "6.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Node",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get local node info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://seed.radicle.xyz/api/v1/node"
+          },
+          "docs": "Returns the local node identity, agent, configuration and running state."
+        },
+        {
+          "info": {
+            "name": "Get a known node by Node ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://seed.radicle.xyz/api/v1/nodes/:nid",
+            "params": [
+              {
+                "name": "nid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a known node by Node ID"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,99 @@
+{
+  "item": [
+    {
+      "id": "178c5166-a58e-45ef-a24e-01284db79c97",
+      "name": "Stats",
+      "description": {
+        "content": "Aggregate node statistics",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dcb530a3-797a-4b73-8d35-f86b31e16364",
+          "name": "Get node statistics",
+          "request": {
+            "name": "Get node statistics",
+            "description": {},
+            "url": {
+              "path": [
+                "stats"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c8a6eeb4-3a8b-4b9d-b69e-6285b6e1d332",
+              "name": "Aggregate stats",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"repos\": {\n    \"total\": 252\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://seed.radicle.xyz/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "159d1a71-8c90-4e4c-97b5-6ff1c29c2a90",
+    "name": "Radicle HTTP API (radicle-httpd) Issues Stats API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Radicle is a sovereign, peer-to-peer code collaboration stack built on Git. Each Radicle node can run `radicle-httpd`, a lightweight HTTP daemon that exposes a read-oriented JSON API over the node's local storage: repositories (Radicle Object Bag / COBs), issues, patches, commits, trees, blobs, node info and network statistics. This specification was derived by probing the live public seed node at https://seed.radicle.xyz/api/v1 (radicle-httpd 0.25.0, apiVersion 6.1.0). Read endpoints are public and unauthenticated; write operations on a self-hosted node require a signed session created with the node's key. Identifiers use Radicle conventions: Repository IDs (`rad:`), Node IDs (`z6Mk...`, a did:key), and DIDs (`did:key:...`).\n\n\nContact Support:\n Name: Radicle",
+      "type": "text/plain"
+    }
+  }
+}

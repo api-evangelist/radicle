@@ -1,0 +1,838 @@
+{
+  "item": [
+    {
+      "id": "05369308-212b-4bc2-87ba-670fadb90d20",
+      "name": "Source",
+      "description": {
+        "content": "Commits, trees, blobs and READMEs",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "280d4ffe-9822-4874-8e72-cc713a534f95",
+          "name": "List commits",
+          "request": {
+            "name": "List commits",
+            "description": {},
+            "url": {
+              "path": [
+                "repos",
+                ":rid",
+                "commits"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "parent",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "since",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "until",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "perPage",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "rid",
+                  "description": "(Required) Repository ID (e.g. rad:z6cFWeWpnZNHh9rUW8phgA3b5yGt)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d48e71e5-df70-4477-b8cb-50d10a7ce2f2",
+              "name": "Array of commits",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "repos",
+                    ":rid",
+                    "commits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "parent",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "since",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "until",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "perPage",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rid",
+                      "description": "(Required) Repository ID (e.g. rad:z6cFWeWpnZNHh9rUW8phgA3b5yGt)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"author\": {\n      \"name\": \"string\",\n      \"email\": \"string\"\n    },\n    \"summary\": \"string\",\n    \"description\": \"string\",\n    \"parents\": [\n      \"string\",\n      \"string\"\n    ],\n    \"committer\": {\n      \"name\": \"string\",\n      \"email\": \"string\",\n      \"time\": 9095\n    }\n  },\n  {\n    \"id\": \"string\",\n    \"author\": {\n      \"name\": \"string\",\n      \"email\": \"string\"\n    },\n    \"summary\": \"string\",\n    \"description\": \"string\",\n    \"parents\": [\n      \"string\",\n      \"string\"\n    ],\n    \"committer\": {\n      \"name\": \"string\",\n      \"email\": \"string\",\n      \"time\": 3467\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "578f787f-e206-469a-90f4-be5e0473d9cd",
+          "name": "Get a commit",
+          "request": {
+            "name": "Get a commit",
+            "description": {},
+            "url": {
+              "path": [
+                "repos",
+                ":rid",
+                "commits",
+                ":sha"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "rid",
+                  "description": "(Required) Repository ID (e.g. rad:z6cFWeWpnZNHh9rUW8phgA3b5yGt)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sha",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "36feb2bc-00d7-4a64-a8f8-6d0b8cbd0122",
+              "name": "Commit with diff",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "repos",
+                    ":rid",
+                    "commits",
+                    ":sha"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rid",
+                      "description": "(Required) Repository ID (e.g. rad:z6cFWeWpnZNHh9rUW8phgA3b5yGt)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sha",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"author\": {\n    \"name\": \"string\",\n    \"email\": \"string\"\n  },\n  \"summary\": \"string\",\n  \"description\": \"string\",\n  \"parents\": [\n    \"string\",\n    \"string\"\n  ],\n  \"committer\": {\n    \"name\": \"string\",\n    \"email\": \"string\",\n    \"time\": 2237\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2788f6d7-114e-4e95-80e7-58c140708b91",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "repos",
+                    ":rid",
+                    "commits",
+                    ":sha"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rid",
+                      "description": "(Required) Repository ID (e.g. rad:z6cFWeWpnZNHh9rUW8phgA3b5yGt)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sha",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 8794\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "340925a3-7202-4238-aa49-1c28645fb756",
+          "name": "Get a source tree",
+          "request": {
+            "name": "Get a source tree",
+            "description": {},
+            "url": {
+              "path": [
+                "repos",
+                ":rid",
+                "tree",
+                ":sha",
+                ":path"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "rid",
+                  "description": "(Required) Repository ID (e.g. rad:z6cFWeWpnZNHh9rUW8phgA3b5yGt)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sha",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "path",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1f6a4d72-e484-494e-bf5c-f527bf77c1b5",
+              "name": "Tree listing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "repos",
+                    ":rid",
+                    "tree",
+                    ":sha",
+                    ":path"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rid",
+                      "description": "(Required) Repository ID (e.g. rad:z6cFWeWpnZNHh9rUW8phgA3b5yGt)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sha",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "path",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"lastCommit\": {},\n  \"name\": \"string\",\n  \"path\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b4267818-f76c-471b-b57a-2906fae54596",
+              "name": "Invalid revision or path",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "repos",
+                    ":rid",
+                    "tree",
+                    ":sha",
+                    ":path"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rid",
+                      "description": "(Required) Repository ID (e.g. rad:z6cFWeWpnZNHh9rUW8phgA3b5yGt)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sha",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "path",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 8794\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "50e16096-c534-49b7-9d70-59aa6ebf8142",
+          "name": "Get a file blob",
+          "request": {
+            "name": "Get a file blob",
+            "description": {},
+            "url": {
+              "path": [
+                "repos",
+                ":rid",
+                "blob",
+                ":sha",
+                ":path"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "rid",
+                  "description": "(Required) Repository ID (e.g. rad:z6cFWeWpnZNHh9rUW8phgA3b5yGt)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sha",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "path",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f00bc2ed-40be-47ad-9565-6c3d023fcb7c",
+              "name": "Blob content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "repos",
+                    ":rid",
+                    "blob",
+                    ":sha",
+                    ":path"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rid",
+                      "description": "(Required) Repository ID (e.g. rad:z6cFWeWpnZNHh9rUW8phgA3b5yGt)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sha",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "path",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"binary\": true,\n  \"content\": \"string\",\n  \"name\": \"string\",\n  \"path\": \"string\",\n  \"lastCommit\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1b8581f2-0277-41f8-b789-baac63608f7e",
+              "name": "Invalid revision or path",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "repos",
+                    ":rid",
+                    "blob",
+                    ":sha",
+                    ":path"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rid",
+                      "description": "(Required) Repository ID (e.g. rad:z6cFWeWpnZNHh9rUW8phgA3b5yGt)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sha",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "path",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 8794\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ae10ee13-4ce7-4db4-a409-6b5861b3d510",
+          "name": "Get the repository README at a revision",
+          "request": {
+            "name": "Get the repository README at a revision",
+            "description": {},
+            "url": {
+              "path": [
+                "repos",
+                ":rid",
+                "readme",
+                ":sha"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "rid",
+                  "description": "(Required) Repository ID (e.g. rad:z6cFWeWpnZNHh9rUW8phgA3b5yGt)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sha",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "052416a4-e985-413a-a1fc-fccaa81f36f5",
+              "name": "README blob",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "repos",
+                    ":rid",
+                    "readme",
+                    ":sha"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rid",
+                      "description": "(Required) Repository ID (e.g. rad:z6cFWeWpnZNHh9rUW8phgA3b5yGt)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sha",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"binary\": true,\n  \"content\": \"string\",\n  \"name\": \"string\",\n  \"path\": \"string\",\n  \"lastCommit\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "09fda905-b111-40e5-95b1-ed24cb6b98a9",
+              "name": "Invalid revision",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "repos",
+                    ":rid",
+                    "readme",
+                    ":sha"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rid",
+                      "description": "(Required) Repository ID (e.g. rad:z6cFWeWpnZNHh9rUW8phgA3b5yGt)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sha",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 8794\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://seed.radicle.xyz/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ad3814f2-6be4-4cd0-a124-69ef3bfe368b",
+    "name": "Radicle HTTP API (radicle-httpd) Issues Source API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Radicle is a sovereign, peer-to-peer code collaboration stack built on Git. Each Radicle node can run `radicle-httpd`, a lightweight HTTP daemon that exposes a read-oriented JSON API over the node's local storage: repositories (Radicle Object Bag / COBs), issues, patches, commits, trees, blobs, node info and network statistics. This specification was derived by probing the live public seed node at https://seed.radicle.xyz/api/v1 (radicle-httpd 0.25.0, apiVersion 6.1.0). Read endpoints are public and unauthenticated; write operations on a self-hosted node require a signed session created with the node's key. Identifiers use Radicle conventions: Repository IDs (`rad:`), Node IDs (`z6Mk...`, a did:key), and DIDs (`did:key:...`).\n\n\nContact Support:\n Name: Radicle",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Radicle HTTP API (radicle-httpd) Issues Patches API",
+    "version": "6.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Patches",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List repository patches",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://seed.radicle.xyz/api/v1/repos/:rid/patches",
+            "params": [
+              {
+                "name": "rid",
+                "value": "",
+                "type": "path",
+                "description": "Repository ID (e.g. rad:z6cFWeWpnZNHh9rUW8phgA3b5yGt)"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "perPage",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List repository patches"
+        },
+        {
+          "info": {
+            "name": "Get a patch",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://seed.radicle.xyz/api/v1/repos/:rid/patches/:patchId",
+            "params": [
+              {
+                "name": "rid",
+                "value": "",
+                "type": "path",
+                "description": "Repository ID (e.g. rad:z6cFWeWpnZNHh9rUW8phgA3b5yGt)"
+              },
+              {
+                "name": "patchId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a patch"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
