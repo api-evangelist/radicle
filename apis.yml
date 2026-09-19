@@ -156,6 +156,8 @@ apis:
   humanURL: https://radicle.network/nodes/seed.radicle.xyz
   baseURL: https://seed.radicle.xyz/api/v1
   tags:
+  - Services
+  tags_raw:
   - Service
   properties:
   - type: OpenAPI
