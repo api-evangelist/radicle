@@ -1,13 +1,11 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Radicle HTTP API (radicle-httpd) Issues Repositories API
+  title: Radicle HTTP API (radicle-httpd) Repositories API
   version: 6.1.0
   x-generated: '2026-07-20'
   x-method: searched
   x-source: https://seed.radicle.xyz/api/v1
-  description: 'Radicle is a sovereign, peer-to-peer code collaboration stack built on Git. Each Radicle node can run `radicle-httpd`, a lightweight HTTP daemon that exposes a read-oriented JSON API over the node''s local storage: repositories (Radicle Object Bag / COBs), issues, patches, commits, trees, blobs, node info and network statistics. This specification was derived by probing the live public seed node at https://seed.radicle.xyz/api/v1 (radicle-httpd 0.25.0, apiVersion 6.1.0). Read endpoints are public and unauthenticated; write operations on a self-hosted node require a signed session created with the node''s key. Identifiers use Radicle conventions: Repository IDs (`rad:`), Node IDs (`z6Mk...`, a did:key), and DIDs (`did:key:...`).
-
-    '
+  description: Radicle is a sovereign, peer-to-peer code collaboration stack built on Git.
   contact:
     name: Radicle
     url: https://radicle.dev/
@@ -121,6 +119,14 @@ paths:
                 items:
                   $ref: '#/components/schemas/Repo'
 components:
+  parameters:
+    Rid:
+      name: rid
+      in: path
+      required: true
+      description: Repository ID (e.g. rad:z6cFWeWpnZNHh9rUW8phgA3b5yGt)
+      schema:
+        type: string
   schemas:
     Repo:
       type: object
@@ -147,14 +153,6 @@ components:
           type: integer
         refs:
           type: object
-    Activity:
-      type: object
-      properties:
-        activity:
-          type: array
-          items:
-            type: integer
-            description: Unix timestamp
     Did:
       type: object
       properties:
@@ -163,6 +161,14 @@ components:
           description: DID (did:key:...)
         alias:
           type: string
+    Activity:
+      type: object
+      properties:
+        activity:
+          type: array
+          items:
+            type: integer
+            description: Unix timestamp
     Error:
       type: object
       description: Error envelope returned by radicle-httpd.
@@ -174,11 +180,3 @@ components:
       required:
       - error
       - code
-  parameters:
-    Rid:
-      name: rid
-      in: path
-      required: true
-      description: Repository ID (e.g. rad:z6cFWeWpnZNHh9rUW8phgA3b5yGt)
-      schema:
-        type: string

@@ -1,13 +1,7 @@
 {
   "provider": "radicle",
   "sources": [
-    "radicle-issues-api-openapi.yml",
-    "radicle-node-api-openapi.yml",
-    "radicle-patches-api-openapi.yml",
-    "radicle-repositories-api-openapi.yml",
-    "radicle-service-api-openapi.yml",
-    "radicle-source-api-openapi.yml",
-    "radicle-stats-api-openapi.yml"
+    "_original/radicle-httpd-openapi.yml"
   ],
   "outputs": [
     "radicle-issues-api-openapi.yml",
@@ -21,6 +15,18 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "radicle-httpd-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "radicle-issues-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "radicle-node-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "radicle-patches-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "radicle-repositories-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "radicle-service-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "radicle-source-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "radicle-stats-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
