@@ -191,6 +191,30 @@ components:
       schema:
         type: string
   schemas:
+    Error:
+      type: object
+      description: Error envelope returned by radicle-httpd.
+      properties:
+        error:
+          type: string
+        code:
+          type: integer
+      required:
+      - error
+      - code
+    Tree:
+      type: object
+      properties:
+        entries:
+          type: array
+          items:
+            type: object
+        lastCommit:
+          type: object
+        name:
+          type: string
+        path:
+          type: string
     Blob:
       type: object
       properties:
@@ -233,27 +257,3 @@ components:
               type: string
             time:
               type: integer
-    Error:
-      type: object
-      description: Error envelope returned by radicle-httpd.
-      properties:
-        error:
-          type: string
-        code:
-          type: integer
-      required:
-      - error
-      - code
-    Tree:
-      type: object
-      properties:
-        entries:
-          type: array
-          items:
-            type: object
-        lastCommit:
-          type: object
-        name:
-          type: string
-        path:
-          type: string

@@ -56,7 +56,7 @@ tags:
 - Git
 - Peer-to-Peer
 - Version Control
-- Open-Source
+- Open Source
 - Decentralized
 - Developer Tools API
 tags_raw:
@@ -69,6 +69,7 @@ tags_raw:
 - Open Source
 - Decentralized
 - Developer Tools API
+- Open-Source
 apis:
 - aid: radicle:radicle-issues-api
   name: Radicle Issues API

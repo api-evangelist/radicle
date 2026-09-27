@@ -64,17 +64,6 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
-    Error:
-      type: object
-      description: Error envelope returned by radicle-httpd.
-      properties:
-        error:
-          type: string
-        code:
-          type: integer
-      required:
-      - error
-      - code
     Node:
       type: object
       properties:
@@ -88,3 +77,14 @@ components:
           type: object
         state:
           type: object
+    Error:
+      type: object
+      description: Error envelope returned by radicle-httpd.
+      properties:
+        error:
+          type: string
+        code:
+          type: integer
+      required:
+      - error
+      - code

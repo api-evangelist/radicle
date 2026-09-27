@@ -96,6 +96,14 @@ components:
       schema:
         type: string
   schemas:
+    Did:
+      type: object
+      properties:
+        id:
+          type: string
+          description: DID (did:key:...)
+        alias:
+          type: string
     Error:
       type: object
       description: Error envelope returned by radicle-httpd.
@@ -107,14 +115,6 @@ components:
       required:
       - error
       - code
-    Did:
-      type: object
-      properties:
-        id:
-          type: string
-          description: DID (did:key:...)
-        alias:
-          type: string
     Issue:
       type: object
       properties:
