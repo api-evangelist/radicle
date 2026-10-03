@@ -182,14 +182,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
 components:
-  parameters:
-    Rid:
-      name: rid
-      in: path
-      required: true
-      description: Repository ID (e.g. rad:z6cFWeWpnZNHh9rUW8phgA3b5yGt)
-      schema:
-        type: string
   schemas:
     Error:
       type: object
@@ -202,19 +194,6 @@ components:
       required:
       - error
       - code
-    Tree:
-      type: object
-      properties:
-        entries:
-          type: array
-          items:
-            type: object
-        lastCommit:
-          type: object
-        name:
-          type: string
-        path:
-          type: string
     Blob:
       type: object
       properties:
@@ -257,3 +236,24 @@ components:
               type: string
             time:
               type: integer
+    Tree:
+      type: object
+      properties:
+        entries:
+          type: array
+          items:
+            type: object
+        lastCommit:
+          type: object
+        name:
+          type: string
+        path:
+          type: string
+  parameters:
+    Rid:
+      name: rid
+      in: path
+      required: true
+      description: Repository ID (e.g. rad:z6cFWeWpnZNHh9rUW8phgA3b5yGt)
+      schema:
+        type: string

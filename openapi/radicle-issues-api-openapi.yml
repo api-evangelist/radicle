@@ -87,14 +87,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
 components:
-  parameters:
-    Rid:
-      name: rid
-      in: path
-      required: true
-      description: Repository ID (e.g. rad:z6cFWeWpnZNHh9rUW8phgA3b5yGt)
-      schema:
-        type: string
   schemas:
     Did:
       type: object
@@ -144,3 +136,11 @@ components:
           type: array
           items:
             type: object
+  parameters:
+    Rid:
+      name: rid
+      in: path
+      required: true
+      description: Repository ID (e.g. rad:z6cFWeWpnZNHh9rUW8phgA3b5yGt)
+      schema:
+        type: string

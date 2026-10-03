@@ -89,23 +89,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
 components:
-  parameters:
-    Rid:
-      name: rid
-      in: path
-      required: true
-      description: Repository ID (e.g. rad:z6cFWeWpnZNHh9rUW8phgA3b5yGt)
-      schema:
-        type: string
   schemas:
-    Did:
-      type: object
-      properties:
-        id:
-          type: string
-          description: DID (did:key:...)
-        alias:
-          type: string
     Error:
       type: object
       description: Error envelope returned by radicle-httpd.
@@ -154,3 +138,19 @@ components:
           type: array
           items:
             type: object
+    Did:
+      type: object
+      properties:
+        id:
+          type: string
+          description: DID (did:key:...)
+        alias:
+          type: string
+  parameters:
+    Rid:
+      name: rid
+      in: path
+      required: true
+      description: Repository ID (e.g. rad:z6cFWeWpnZNHh9rUW8phgA3b5yGt)
+      schema:
+        type: string
