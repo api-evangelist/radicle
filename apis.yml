@@ -219,6 +219,9 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: CapabilityMap
+  url: capabilities/radicle-capability-edges.yml
+  name: Radicle Business Capability Map
 - type: Overlay
   url: overlays/radicle-httpd-overlay.yaml
 - type: Website

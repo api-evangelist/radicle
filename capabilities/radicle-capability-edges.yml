@@ -1,0 +1,44 @@
+slug: radicle
+provider: Radicle
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 3
+edges:
+- tag: Source
+  spec_file: radicle-source-api-openapi.yml
+  capability_id: BC-4200.40
+  capability_id_l1: BC-4200
+  capability_name: Software Construction Management
+  confidence: 0.85
+  evidence: 'GET /repos/{rid}/commits listCommits; GET /repos/{rid}/blob/{sha}/{path} Get a file blob;
+    schemas: Blob, Commit, Tree'
+  reason: Read access to Git commits, trees, blobs and READMEs — source control / code browsing, the core
+    of software construction practice.
+- tag: Patches
+  spec_file: radicle-patches-api-openapi.yml
+  capability_id: BC-4200.40
+  capability_id_l1: BC-4200
+  capability_name: Software Construction Management
+  confidence: 0.8
+  evidence: 'GET /repos/{rid}/patches listPatches List repository patches; schemas: Patch'
+  reason: Patches are Radicle's change-proposal/code-review objects (equivalent to pull requests) over
+    Git repositories, which is squarely source control and code review practice.
+- tag: Repositories
+  spec_file: radicle-repositories-api-openapi.yml
+  capability_id: BC-4200.40
+  capability_id_l1: BC-4200
+  capability_name: Software Construction Management
+  confidence: 0.75
+  evidence: GET /repos listRepos List seeded repositories; GET /repos/{rid}/activity Repository activity
+    timeline
+  reason: Management and browsing of Git repositories and their activity in a code collaboration stack
+    — source control discipline within software construction.
