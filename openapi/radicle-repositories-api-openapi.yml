@@ -120,25 +120,6 @@ paths:
                   $ref: '#/components/schemas/Repo'
 components:
   schemas:
-    Activity:
-      type: object
-      properties:
-        activity:
-          type: array
-          items:
-            type: integer
-            description: Unix timestamp
-    Error:
-      type: object
-      description: Error envelope returned by radicle-httpd.
-      properties:
-        error:
-          type: string
-        code:
-          type: integer
-      required:
-      - error
-      - code
     Repo:
       type: object
       properties:
@@ -164,6 +145,17 @@ components:
           type: integer
         refs:
           type: object
+    Error:
+      type: object
+      description: Error envelope returned by radicle-httpd.
+      properties:
+        error:
+          type: string
+        code:
+          type: integer
+      required:
+      - error
+      - code
     Did:
       type: object
       properties:
@@ -172,6 +164,14 @@ components:
           description: DID (did:key:...)
         alias:
           type: string
+    Activity:
+      type: object
+      properties:
+        activity:
+          type: array
+          items:
+            type: integer
+            description: Unix timestamp
   parameters:
     Rid:
       name: rid

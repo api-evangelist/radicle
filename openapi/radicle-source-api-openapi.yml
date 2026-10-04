@@ -194,6 +194,19 @@ components:
       required:
       - error
       - code
+    Tree:
+      type: object
+      properties:
+        entries:
+          type: array
+          items:
+            type: object
+        lastCommit:
+          type: object
+        name:
+          type: string
+        path:
+          type: string
     Blob:
       type: object
       properties:
@@ -236,19 +249,6 @@ components:
               type: string
             time:
               type: integer
-    Tree:
-      type: object
-      properties:
-        entries:
-          type: array
-          items:
-            type: object
-        lastCommit:
-          type: object
-        name:
-          type: string
-        path:
-          type: string
   parameters:
     Rid:
       name: rid
